@@ -19,7 +19,7 @@ namespace ProductReviewManagement
                
                 products.Add(new ProductReview() { productId = 2, userId = 6, review = "Average", rating = 10, isLike = true });
                 products.Add(new ProductReview() { productId = 4, userId = 7, review = "Good", rating = 6, isLike = true });
-                products.Add(new ProductReview() { productId = 19, userId = 8, review = "Average", rating = 9, isLike = true });
+                products.Add(new ProductReview() { productId = 7, userId = 8, review = "Average", rating = 9, isLike = true });
                 products.Add(new ProductReview() { productId = 3, userId = 9, review = "Bad", rating = 6, isLike = false });
                 products.Add(new ProductReview() { productId = 5, userId = 4, review = "Average", rating = 5, isLike = true });
                 products.Add(new ProductReview() { productId = 2, userId = 6, review = "Average", rating = 10, isLike = true });
@@ -29,7 +29,7 @@ namespace ProductReviewManagement
                 products.Add(new ProductReview() { productId = 1, userId = 2, review = "Bad", rating = 8, isLike = false });
                 products.Add(new ProductReview() { productId = 5, userId = 9, review = "Average", rating = 7, isLike = true });
                 products.Add(new ProductReview() { productId = 3, userId = 11, review = "Good", rating = 5, isLike = true });
-                products.Add(new ProductReview() { productId = 3, userId = 4, review = "Good", rating = 9, isLike = true });
+                products.Add(new ProductReview() { productId = 7, userId = 4, review = "Good", rating = 9, isLike = true });
                 products.Add(new ProductReview() { productId = 9, userId = 8, review = "Average", rating = 10, isLike = true });
                 products.Add(new ProductReview() { productId = 3, userId = 9, review = "Bad", rating = 6, isLike = false });
                 products.Add(new ProductReview() { productId = 5, userId = 4, review = "Average", rating = 3, isLike = true });
@@ -97,6 +97,23 @@ namespace ProductReviewManagement
             return result.Count;
         }
 
+        /// <summary>
+        /// Method to show how many product exists and count of product
+        /// </summary>
+        public int CountProductId(List<ProductReview> products)
+        {
+            int totalProductsCount = 0;
+            AddProductReviewToList(products);
+            //Using Linq retreive particular records
+            var res = products.GroupBy(x => x.productId).Select(product => new { productId = product.Key, Count = product.Count()});
+            Console.WriteLine("------------------- Records----------------------");
+            foreach (var product in res)
+            {
+                Console.WriteLine($"ProductId = {product.productId}\t Count={product.Count}\n");
+                totalProductsCount++;
+            }
+            return totalProductsCount;
+        }
 
     }
 }

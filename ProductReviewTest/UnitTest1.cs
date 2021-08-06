@@ -67,6 +67,23 @@ namespace ProductReviewTest
             {
                 System.Console.WriteLine(ex.Message);
             }
+        }
+        /// <summary>
+        /// Method to show how many product exists and count of product
+        /// </summary>
+        [TestMethod]
+        public void TestMethodCountProductId()
+        {
+            try
+            {
+                int actual, expected = 12;
+                actual = productReviewManager.CountProductId(reviewList);
+                Assert.AreEqual(actual, expected);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
 
 
         }
