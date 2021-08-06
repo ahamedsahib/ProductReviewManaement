@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace ProductReviewManagement
 {
@@ -18,7 +19,7 @@ namespace ProductReviewManagement
                
                 products.Add(new ProductReview() { productId = 2, userId = 6, review = "Average", rating = 10, isLike = true });
                 products.Add(new ProductReview() { productId = 4, userId = 7, review = "Good", rating = 6, isLike = true });
-                products.Add(new ProductReview() { productId = 19, userId = 8, review = "Average", rating = 10, isLike = true });
+                products.Add(new ProductReview() { productId = 19, userId = 8, review = "Average", rating = 9, isLike = true });
                 products.Add(new ProductReview() { productId = 3, userId = 9, review = "Bad", rating = 6, isLike = false });
                 products.Add(new ProductReview() { productId = 5, userId = 4, review = "Average", rating = 5, isLike = true });
                 products.Add(new ProductReview() { productId = 2, userId = 6, review = "Average", rating = 10, isLike = true });
@@ -69,7 +70,18 @@ namespace ProductReviewManagement
             }
 
         }
-
+        /// <summary>
+        /// Method to retreive top 3 ratings records
+        /// </summary>
+        public int RetrieveTopThreeRating(List<ProductReview> products)
+        {
+             AddProductReviewToList(products);
+            //Using Linq query sort product list  descending order and take first 3 elements
+            var res = (from product in products orderby product.rating descending select product).Take(3).ToList();
+            Console.WriteLine("---------------------- TOP 3 RATING----------------------");
+            IterateList(res);
+            return res.Count;
+        }
 
     }
 }

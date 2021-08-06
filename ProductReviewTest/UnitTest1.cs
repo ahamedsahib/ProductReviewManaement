@@ -33,6 +33,23 @@ namespace ProductReviewTest
             {
                 System.Console.WriteLine(ex.Message);
             }
+        }
+        /// <summary>
+        /// test method to retreive top 3 Ratin
+        /// </summary>
+        [TestMethod]
+        public void TestMethodRetreiveTop3()
+        {
+            try
+            {
+                int actual, expected = 3;
+                actual = productReviewManager.RetrieveTopThreeRating(reviewList);
+                Assert.AreEqual(actual, expected);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
 
 
         }
