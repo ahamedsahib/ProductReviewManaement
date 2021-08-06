@@ -205,5 +205,31 @@ namespace ProductReviewManagement
             }
             return count;
         }
+        
+        /// <summary>
+        /// Method to retreive average rating of each product
+        /// </summary>
+        public  int AverageRating(List<ProductReview> products)
+        {
+            int count = 0;
+            try 
+            { 
+            DataTable dataTable = CreateDataTable(products);
+            var result = from product in dataTable.AsEnumerable()
+                         group product by product.Field<int>("productId") into Table
+                         select new { productid = Table.Key, Average = Math.Round(Table.Average(x => x.Field<int>("rating")), 1) };
+            foreach (var product in result)
+            {
+                Console.WriteLine($"ProductID:{ product.productid}\t AverageRating:{product.Average}");
+                count++;
+            }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+            }
+            return count;
+        }
     }
 }

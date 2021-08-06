@@ -151,5 +151,25 @@ namespace ProductReviewTest
                 System.Console.WriteLine(ex.Message);
             }
         }
+        /// <summary>
+         /// Test method retreive only records where is like is true
+         /// </summary>
+        [TestMethod]
+        public void TestMethodAverageRating()
+        {
+            try 
+            {
+                int actual, expected = 12;
+                actual = productReviewManager.AverageRating(reviewList);
+
+                Assert.AreEqual(expected, actual);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
+
+
+        }
     }
 }
