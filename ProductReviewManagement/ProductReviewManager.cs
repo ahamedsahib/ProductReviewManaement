@@ -83,5 +83,20 @@ namespace ProductReviewManagement
             return res.Count;
         }
 
+        /// <summary>
+        /// Method to retreive particular records
+        /// </summary>
+
+        public int RetrieveParticularProduct(List<ProductReview> products)
+        {
+            AddProductReviewToList(products);
+            //Using Linq retrieve particular product id and rating
+            var result = (from product in products where (product.productId == 1 || product.productId == 4 || product.productId == 9) && product.rating > 6 select product).ToList();
+            Console.WriteLine("------- Records-------");
+            IterateList(result);
+            return result.Count;
+        }
+
+
     }
 }

@@ -50,6 +50,23 @@ namespace ProductReviewTest
             {
                 System.Console.WriteLine(ex.Message);
             }
+        }
+        /// <summary>
+        /// test method to retreive  records
+        /// </summary>
+        [TestMethod]
+        public void TestMethodRetreiveParticularRecords()
+        {
+            try
+            {
+                int actual, expected = 5;
+                actual = productReviewManager.RetrieveParticularProduct(reviewList);
+                Assert.AreEqual(actual, expected);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
 
 
         }
