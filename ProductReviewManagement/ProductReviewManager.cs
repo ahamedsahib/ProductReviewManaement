@@ -133,6 +133,30 @@ namespace ProductReviewManagement
             return count;
         }
 
+        /// <summary>
+        ///  method to skip 5 records
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns></returns>
+        public int SkipRecords(List<ProductReview> products)
+        {
 
+            try
+            {
+                AddProductReviewToList(products);
+                //Using Linq sort product list in ascending order and skip 5 elements
+                var result = (from product in products orderby product.productId ascending select product).Skip(5).ToList();
+                Console.WriteLine("-----------------EXCEPt FIRST 5----------------------");
+                IterateList(result);
+                return result.Count;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return 0;
+            }
+
+
+        }
     }
 }
