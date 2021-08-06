@@ -118,6 +118,21 @@ namespace ProductReviewTest
             {
                 System.Console.WriteLine(ex.Message);
             }
+        }
+        /// <summary>
+        /// test method to skip 5 records
+        /// </summary>
+        [TestMethod]
+        public void TestMethodCreateDatatable()
+        {
+            try
+            {
+                productReviewManager.CreateDataTable(reviewList);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
 
 
         }

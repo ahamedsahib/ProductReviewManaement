@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Data;
 
 namespace ProductReviewManagement
 {
@@ -136,8 +137,6 @@ namespace ProductReviewManagement
         /// <summary>
         ///  method to skip 5 records
         /// </summary>
-        /// <param name="products"></param>
-        /// <returns></returns>
         public int SkipRecords(List<ProductReview> products)
         {
 
@@ -157,6 +156,30 @@ namespace ProductReviewManagement
             }
 
 
+        }
+
+        /// <summary>
+        /// Method to create datatable and Insert data
+        /// </summary>
+
+        public DataTable CreateDataTable(List<ProductReview> products)
+        {
+            AddProductReviewToList(products);
+            //Initialise datatable
+            DataTable Table = new DataTable();
+            //add cloumn names to data table 
+            Table.Columns.Add("productId", typeof(int));
+            Table.Columns.Add("userId", typeof(int));
+            Table.Columns.Add("rating", typeof(int));
+            Table.Columns.Add("review", typeof(string));
+            Table.Columns.Add("isLike", typeof(bool));
+
+            foreach (var data in products)
+            {
+                //add rows from product list to data table
+                Table.Rows.Add(data.productId, data.userId, data.rating, data.review, data.isLike);
+            }
+            return Table;
         }
     }
 }
