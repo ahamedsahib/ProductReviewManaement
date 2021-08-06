@@ -133,8 +133,23 @@ namespace ProductReviewTest
             {
                 System.Console.WriteLine(ex.Message);
             }
-
-
+        }
+        /// <summary>
+        /// Test method retreive only records where is like is true
+        /// </summary>
+        [TestMethod]
+        public void TestMethodRetreiveBasedOnIsLike()
+        {
+            try
+            {
+                int actual, expected = 15;
+                actual = productReviewManager.RetreiveProducIfIsLikeTrue(reviewList);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
         }
     }
 }
