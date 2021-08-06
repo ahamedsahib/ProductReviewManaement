@@ -102,5 +102,24 @@ namespace ProductReviewTest
                 Console.WriteLine(ex.Message);
             }
         }
+        /// <summary>
+        /// test method to skip  first 5 records
+        /// </summary>
+        [TestMethod]
+        public void TestMethodForSkipFirst5Records()
+        {
+            try
+            {
+                int actual, expected = 20;
+                actual = productReviewManager.SkipRecords(reviewList);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
+
+
+        }
     }
 }
