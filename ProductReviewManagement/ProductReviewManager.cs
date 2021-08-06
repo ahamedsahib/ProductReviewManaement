@@ -181,5 +181,29 @@ namespace ProductReviewManagement
             }
             return Table;
         }
+
+        /// <summary>
+        /// Method to retreive only records where is like is true
+        /// </summary>
+        public int RetreiveProducIfIsLikeTrue(List<ProductReview> products)
+        {
+            int count = 0;
+            try
+            {
+                DataTable dataTable = CreateDataTable(products);
+                var res = from table in dataTable.AsEnumerable() where table.Field<bool>("isLike") == true select table;
+                foreach (var row in res)
+                {
+                    Console.WriteLine($"{row["productId"]} | {row["userId"]} | {row["rating"]} | {row["review"]} | {row["isLike"]} |");
+                    count++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+            }
+            return count;
+        }
     }
 }
