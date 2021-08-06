@@ -255,5 +255,30 @@ namespace ProductReviewManagement
             return count;
         }
 
+        /// <summary>
+        /// Method to retreive data based on user id
+        /// </summary>
+        public int RetreiveBasedOnUserId(List<ProductReview> products)
+        {
+            int count = 0;
+            try
+            {
+                DataTable dataTable = CreateDataTable(products);
+                var res = (from table in dataTable.AsEnumerable() where table.Field<Int32>("userId") == 1 orderby table.Field<int>("rating") select table).ToList();
+                foreach (var row in res)
+                {
+                    Console.WriteLine($"{row["productId"]} | {row["userId"]} | {row["rating"]} | {row["review"]} | {row["isLike"]} |");
+                    count++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+            }
+            return count;
+        }
+
+
     }
 }
