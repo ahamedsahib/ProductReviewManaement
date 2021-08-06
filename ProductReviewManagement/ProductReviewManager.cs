@@ -231,5 +231,29 @@ namespace ProductReviewManagement
             }
             return count;
         }
+        /// <summary>
+        /// Method to retreive product having good rating
+        /// </summary>
+
+        public int RetreiveGoodRatings(List<ProductReview> products)
+        {
+            int count = 0;
+            try
+            {
+                DataTable dataTable = CreateDataTable(products);
+                var result = from table in dataTable.AsEnumerable() where table.Field<string>("review").Contains("Good") select table;
+                foreach (var row in result)
+                {
+                    Console.WriteLine($"{row["productId"]} | {row["userId"]} | {row["rating"]} | {row["review"]} | {row["isLike"]} |");
+                    count++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return count;
+        }
+
     }
 }

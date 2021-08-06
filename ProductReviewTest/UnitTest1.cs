@@ -152,8 +152,8 @@ namespace ProductReviewTest
             }
         }
         /// <summary>
-         /// Test method retreive only records where is like is true
-         /// </summary>
+        /// Method to retreive average rating of each product
+        /// </summary>
         [TestMethod]
         public void TestMethodAverageRating()
         {
@@ -168,8 +168,23 @@ namespace ProductReviewTest
             {
                 System.Console.WriteLine(ex.Message);
             }
-
-
+        }
+        /// <summary>
+        /// Test method retreive only rating contains good
+        /// </summary>
+        [TestMethod]
+        public void TestMethodRetreiveGoodRatings()
+        {
+            try
+            {
+                int actual, expected = 10;
+                actual = productReviewManager.RetreiveGoodRatings(reviewList);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
