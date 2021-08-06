@@ -115,5 +115,24 @@ namespace ProductReviewManagement
             return totalProductsCount;
         }
 
+        /// <summary>
+        /// Method to retreive only id and review using select
+        /// </summary>
+        public int RetrieveProductIdAndReview(List<ProductReview> products)
+        {
+            //counter variable
+            int count = 0;
+            AddProductReviewToList(products);
+            var result = products.Select(product => new { productId = product.productId, review = product.review }).ToList();
+            foreach (var product in result)
+            {
+                Console.WriteLine($"ProductId = {product.productId}\t Review={product.review}\n");
+                //increment the count
+                count++;
+            }
+            return count;
+        }
+
+
     }
 }

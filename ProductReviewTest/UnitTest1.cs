@@ -31,7 +31,7 @@ namespace ProductReviewTest
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
         /// <summary>
@@ -48,7 +48,7 @@ namespace ProductReviewTest
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
         /// <summary>
@@ -65,7 +65,7 @@ namespace ProductReviewTest
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
         /// <summary>
@@ -82,10 +82,25 @@ namespace ProductReviewTest
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
             }
-
-
+        }
+        /// <summary>
+        /// test method to retreive only id and review using select
+        /// </summary>
+        [TestMethod]
+        public void TestMethodRetrieveProductIdAndReview()
+        {
+            try
+            {
+                int actual, expected = 25;
+                actual = productReviewManager.RetrieveProductIdAndReview(reviewList);
+                Assert.AreEqual(actual, expected);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
